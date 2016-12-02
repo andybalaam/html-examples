@@ -1,0 +1,40 @@
+Move the mouse...
+<img src="face.svg" id="face" style="position: fixed;"/>
+<script>
+var face_friction = 0.95;
+var face_acc = 0.1;
+var frame_time = 20;
+var face_speed = 30;
+var face = document.getElementById("face");
+var x = 50;
+var y = 50;
+var vx = 0;
+var vy = 0;
+var mx = 50;
+var my = 50;
+
+document.onmousemove = function(evt) {
+    mx = evt.pageX;
+    my = evt.pageY;
+};
+
+function update() {
+    var spd;
+    vx += (mx - x) * face_acc;
+    vy += (my - y) * face_acc;
+    spd = Math.sqrt(vx*vx + vy*vy) / face_speed;
+    if (spd > 1) {
+        vx /= spd;
+        vy /= spd;
+    }
+    vx *= face_friction;
+    vy *= face_friction;
+    x += vx;
+    y += vy;
+    face.style.left = (x - 25) + "px";
+    face.style.top  = (y - 25) + "px";
+    setTimeout(update, frame_time);
+}
+
+setTimeout(update, frame_time);
+</script>

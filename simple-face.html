@@ -1,0 +1,21 @@
+Move the mouse...
+<img src="face.svg" id="face" style="position: fixed;"/>
+<script>
+var frame_time = 20;
+var face = document.getElementById("face");
+var mx = 50;
+var my = 50;
+
+document.onmousemove = function(evt) {
+    mx = evt.pageX;
+    my = evt.pageY;
+};
+
+function update() {
+    face.style.left = (mx - 25) + "px";
+    face.style.top  = (my - 25) + "px";
+    setTimeout(update, frame_time);
+}
+
+setTimeout(update, frame_time);
+</script>
