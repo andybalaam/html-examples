@@ -1,0 +1,16 @@
+<p>Click the picture to change to a different image:</p>
+
+<img id="pic" src="spitfire1.jpg" style="width: 20em; height=15em;"/>
+
+<script>
+var num = 0;
+var pics = ["spitfire1.jpg", "spitfire2.gif"];
+var pic = document.getElementById("pic");
+pic.onclick = function() {
+    ++num;
+    if (num == pics.length) {
+        num = 0;
+    }
+    pic.src = pics[num];
+};
+</script>
